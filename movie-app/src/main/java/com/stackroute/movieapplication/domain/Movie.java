@@ -2,7 +2,6 @@ package com.stackroute.movieapplication.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,15 +15,11 @@ import lombok.NoArgsConstructor;
 public class Movie {
 
 	@Id
-	private int movieId;
+	private String movieId;
 
 	private String movieTitle;
-	private int movieRating;
+	private String movieRating;
 	private String movieDesc;
 	private int movieReleaseYear;
 
-	public Movie(int movieId, String movieTitle) {
-		this.movieId = movieId;
-		this.movieTitle = movieTitle;
-	}
 }

@@ -1,18 +1,18 @@
 package com.stackroute.movieapplication.controller;
 
 import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.stackroute.movieapplication.domain.Movie;
 import com.stackroute.movieapplication.services.MovieService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/api/v1")
 public class MovieController {
@@ -49,9 +49,9 @@ public class MovieController {
 	}
 
 	@RequestMapping(value = "/movie/{id}", method = RequestMethod.DELETE, produces = { "application/json" })
-	public ResponseEntity<String> deleteMoviefromDB(@PathVariable int id) {
+	public ResponseEntity<String> deleteMoviefromDB(@PathVariable String id) {
 
-		int movieId = movieService.deleteMovie(id);
+		int movieId = Integer.parseInt(movieService.deleteMovie(id));
 
 		if (movieId == 0) {
 
@@ -64,7 +64,7 @@ public class MovieController {
 	}
 
 	@RequestMapping(value = "/movie/{movieId}", method = RequestMethod.PUT, produces = "application/json")
-	public ResponseEntity<Movie> updateMovie(@RequestBody Movie movie, @PathVariable int movieId) {
+	public ResponseEntity<Movie> updateMovie(@RequestBody Movie movie, @PathVariable String movieId) {
 
 		Movie movieObj = movieService.updateMovie(movie, movieId);
 
@@ -73,7 +73,7 @@ public class MovieController {
 	}
 
 	@RequestMapping(value = "/movie/{movieId}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<Movie> getById(@PathVariable int movieId) {
+	public ResponseEntity<Movie> getById(@PathVariable String movieId) {
 
 		if (movieService.getMovieById(movieId) == null) {
 

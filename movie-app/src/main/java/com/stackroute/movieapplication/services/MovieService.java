@@ -10,10 +10,10 @@ public interface MovieService {
 
 	public List<Movie> getAllMovies();
 
-	public int deleteMovie(int movieId);
+	public String deleteMovie(String movieId);
 
-	public Movie getMovieById(int movieId);
+	public Movie getMovieById(String movieId);
 
-	public Movie updateMovie(Movie movie, int movieId);
+	public Movie updateMovie(Movie movie, String movieId);
 
 }

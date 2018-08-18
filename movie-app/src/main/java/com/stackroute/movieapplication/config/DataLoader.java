@@ -28,8 +28,8 @@ public class DataLoader implements CommandLineRunner {
 		System.out.println("Inside CommandLineRunner class");
 		logger.info("Loading data...");
 
-		movieRepository.save(new Movie(1, "First"));
-		movieRepository.save(new Movie(2, "Second"));
+		movieRepository.save(new Movie("1", "First","100","completed",2020));
+		movieRepository.save(new Movie("2", "Second","90","completed",2020));
 
 	}
 }
